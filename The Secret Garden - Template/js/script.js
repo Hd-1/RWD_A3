@@ -4,3 +4,13 @@ $(window).mousemove(function(event){
 });
 
 
+$("#butterfly").animate({left: "+=200"},"slow",function() {randMovement(this)});
+
+function randMovement(IdRef) {
+    $(IdRef).
+    animate({left:Math.random()*500},1000).
+    animate({top:Math.random()*500},1000).
+    animate({left:Math.random()*500},1000).
+    animate({top:Math.random()*500},function(){randMovement(IdRef);})
+    ;
+}
