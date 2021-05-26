@@ -7,14 +7,26 @@ var net = document.getElementById("net");
 $(net).css("z-index", "2")
 
 
+$('#butterfly').css("z-index", "5");
+$('#butterfly').mouseover(function () {
+    var width = $(window).width();
+    var height = $(window).height();
+    var x = getRandomWholeNumbers(0, width-250);
+    var y = getRandomWholeNumbers(0, height-250);
+    $('#butterfly').css({ 'left': x + 'px', 'top': y + 'px' });
+});
+
 $("#butterfly").animate({left: "+=200"},"slow",function() {randMovement(this)});
 
 function randMovement(IdRef) {
+    var width = $(window).width();
+    var height = $(window).height();
+    var speed = 3000;
     $(IdRef).
-    animate({left:Math.random()*500},1000).
-    animate({top:Math.random()*500},1000).
-    animate({left:Math.random()*500},1000).
-    animate({top:Math.random()*500},function(){randMovement(IdRef);})
+    animate({left:getRandomWholeNumbers(0, width-250)},speed).
+    animate({top:getRandomWholeNumbers(0, height-250)},speed).
+    animate({left:getRandomWholeNumbers(0, height-250)},speed).
+    animate({top:getRandomWholeNumbers(0, height-250)},function(){randMovement(IdRef);})
     ;
 }
 
