@@ -4,10 +4,10 @@ $(window).mousemove(function(event){
 });
 
 var net = document.getElementById("net");
-$(net).css("z-index", "2")
+$(net).css("z-index", "4")
 
 
-$('#butterfly').css("z-index", "5");
+$('#butterfly').css("z-index", "4");
 $('#butterfly').mouseover(function () {
     var width = $(window).width();
     var height = $(window).height();
