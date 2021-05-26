@@ -38,4 +38,19 @@ function getRandomWholeNumbers(min, max) {
     return number;
 }
 
+var basket = document.getElementById("basketfront");
+var basketInfo = basket.getBoundingClientRect();
+
+var basketInfoLeft = basketInfo.left + 20;
+var basketInfoTop = basketInfo.top - 30;
+
+var apple = document.getElementsByClassName("apple");
+$(apple).css("z-index", "1")
+$(function () {
+    $(apple).click(function () {
+        $(this).
+        animate({top:basketInfoTop, left: basketInfoLeft}, {duration: 500});
+    })
+})
+
 
