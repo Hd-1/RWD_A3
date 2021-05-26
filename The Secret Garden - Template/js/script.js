@@ -14,3 +14,28 @@ function randMovement(IdRef) {
     animate({top:Math.random()*500},function(){randMovement(IdRef);})
     ;
 }
+
+var tree = document.getElementById("tree");
+var treeInfo = tree.getBoundingClientRect();
+
+var treeInfoLeft = treeInfo.left + 130;
+var treeInfoTop = treeInfo.top + 100;
+
+var apple1 = document.getElementById("apple1");
+apple1.style.left =  treeInfoLeft + getRandomWholeNumbers(0, 350) + "px";
+apple1.style.top = treeInfoTop + getRandomWholeNumbers(0, 200) + "px";
+
+var apple2 = document.getElementById("apple2");
+apple2.style.left =  treeInfoLeft + getRandomWholeNumbers(0, 350) + "px";
+apple2.style.top = treeInfoTop + getRandomWholeNumbers(0, 200) + "px";
+
+var apple3 = document.getElementById("apple3");
+apple3.style.left =  treeInfoLeft + getRandomWholeNumbers(0, 350) + "px";
+apple3.style.top = treeInfoTop + getRandomWholeNumbers(0, 200) + "px";
+
+function getRandomWholeNumbers(min, max) {
+    var number = Math.floor(Math.random() * (max - min) + min);
+    return number;
+}
+
+
