@@ -70,18 +70,26 @@ $(function () {
     })
 })
 
-var wateringCan = document.getElementById("wateringcan");
+var wateringcan = document.getElementById("wateringcan");
+var wateringcanInfo = wateringcan.getBoundingClientRect();
+var wateringcanInfoLeft = wateringcanInfo.left + 100 + "px";
+var wateringcanInfoTop = wateringcanInfo.top + 50 + "px";
+
+var waterdrop = document.getElementsByClassName("waterdrop");
+$(wateringcan).css("z-index", "3")
+
+$(waterdrop).css({"transform": "translate(" + wateringcanInfoLeft + ", " + wateringcanInfoTop + ")"});
 $(function () {
     var tilted = false;
-    $(wateringCan).click(function () {
+    $(wateringcan).click(function () {
         if (tilted) {
-            $(wateringCan).css({"transform": "rotate(" + -30 + "deg)"});
+            $(wateringcan).css({"transform": "rotate(" + -30 + "deg)"});
             tilted = false;
+            //$(waterdrop).animate({bottom: windowBottom}, {duration: 500})
         } else
         {
-            $(wateringCan).css({"transform": "rotate(" + 0 + "deg)"});
+            $(wateringcan).css({"transform": "rotate(" + 0 + "deg)"});
             tilted = true;
         }
     })
 })
-$(wateringCan).css("z-index", "3")
