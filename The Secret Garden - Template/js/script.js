@@ -20,6 +20,7 @@ function randMovement(IdRef) {
 
 var tree = document.getElementById("tree");
 var treeInfo = tree.getBoundingClientRect();
+$(tree).css("z-index", "1")
 
 var treeInfoLeft = treeInfo.left + 130;
 var treeInfoTop = treeInfo.top + 100;
@@ -48,7 +49,7 @@ var basketInfoLeft = basketInfo.left + 20;
 var basketInfoTop = basketInfo.top - 30;
 
 var apple = document.getElementsByClassName("apple");
-$(apple).css("z-index", "1")
+$(apple).css("z-index", "4")
 
 $(function () {
     $(apple1).click(function () {
@@ -69,3 +70,18 @@ $(function () {
     })
 })
 
+var wateringCan = document.getElementById("wateringcan");
+$(function () {
+    var tilted = false;
+    $(wateringCan).click(function () {
+        if (tilted) {
+            $(wateringCan).css({"transform": "rotate(" + -30 + "deg)"});
+            tilted = false;
+        } else
+        {
+            $(wateringCan).css({"transform": "rotate(" + 0 + "deg)"});
+            tilted = true;
+        }
+    })
+})
+$(wateringCan).css("z-index", "3")
