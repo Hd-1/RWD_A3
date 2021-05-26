@@ -3,6 +3,9 @@ $(window).mousemove(function(event){
     $("#net").css({"left" : event.pageX, "top" : event.pageY});
 });
 
+var net = document.getElementById("net");
+$(net).css("z-index", "2")
+
 
 $("#butterfly").animate({left: "+=200"},"slow",function() {randMovement(this)});
 
@@ -46,11 +49,23 @@ var basketInfoTop = basketInfo.top - 30;
 
 var apple = document.getElementsByClassName("apple");
 $(apple).css("z-index", "1")
+
 $(function () {
-    $(apple).click(function () {
+    $(apple1).click(function () {
         $(this).
         animate({top:basketInfoTop, left: basketInfoLeft}, {duration: 500});
     })
 })
-
+$(function () {
+    $(apple2).click(function () {
+        $(this).
+        animate({top:basketInfoTop, left: basketInfoLeft + 50}, {duration: 500});
+    })
+})
+$(function () {
+    $(apple3).click(function () {
+        $(this).
+        animate({top:basketInfoTop, left: basketInfoLeft + 100}, {duration: 500});
+    })
+})
 
