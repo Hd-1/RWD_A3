@@ -86,28 +86,31 @@ $(function () {
 var wateringcan = document.getElementById("wateringcan");
 var wateringcanInfo = wateringcan.getBoundingClientRect();
 $(wateringcan).css("z-index", "5");
-var wateringcanInfoLeft = wateringcanInfo.left + 100 + "px";
-var wateringcanInfoTop = wateringcanInfo.top + 50 + "px";
+var wateringcanInfoLeft = wateringcanInfo.left;
+var wateringcanInfoTop = wateringcanInfo.top;
+
+var wateringcanInfoLeftInitial = wateringcanInfoLeft + 100 + "px";
+var wateringcanInfoTopInitial = wateringcanInfoTop + 100 + "px";
 
 var waterdrops = document.getElementsByClassName("waterdrop");
 $(waterdrops).css("z-index", "4");
 $(waterdrops).css({position: 'absolute'});
 
 var windowHeight = $(window).height()
-$(waterdrops).css({"transform": "translate(" + wateringcanInfoLeft + ", " + wateringcanInfoTop + ")"});
+$(waterdrops).css({"transform": "translate(" + wateringcanInfoLeftInitial + ", " + wateringcanInfoTopInitial + ")"});
 $(document).ready(function() {
     var tilted = false;
     $(wateringcan).click(function () {
         if (tilted) {
+            var left = 510 + "px";
+            var top = wateringcanInfoTop + getRandomWholeNumbers(60, 200) + "px";
             $(wateringcan).css({"transform": "rotate(" + -30 + "deg)"});
-            $(waterdrops).each(function (index, element){
-                $(element).css({"transform": "translate(" + wateringcanInfoLeft + ", " + wateringcanInfoTop + ")"})
+            $(waterdrops).css({"transform": "translate(" + left + ", " + top + ")"});
+            $(waterdrops).each(function (index, element) {
                 $(element).animate({top: windowHeight}, {duration: getRandomWholeNumbers(1000, 5000)})
             })
             tilted = false;
-        } else
-        {
-            //$(waterdrops).css({"transform": "translate(" + wateringcanInfoLeft + ", " + wateringcanInfoTop + ")"});
+        } else {
             $(wateringcan).css({"transform": "rotate(" + 0 + "deg)"});
             tilted = true;
         }
