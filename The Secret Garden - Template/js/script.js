@@ -4,10 +4,10 @@ $(window).mousemove(function(event){
 });
 
 var net = document.getElementById("net");
-$(net).css("z-index", "4")
+$(net).css("z-index", "2")
 
 
-$('#butterfly').css("z-index", "4");
+$('#butterfly').css("z-index", "3");
 $('#butterfly').mouseover(function () {
     var width = $(window).width();
     var height = $(window).height();
@@ -56,52 +56,62 @@ function getRandomWholeNumbers(min, max) {
 
 var basket = document.getElementById("basketfront");
 var basketInfo = basket.getBoundingClientRect();
+$(basket).css("z-index", "7")
 
 var basketInfoLeft = basketInfo.left + 20;
-var basketInfoTop = basketInfo.top - 30;
+var basketInfoTop = basketInfo.top;
 
 var apple = document.getElementsByClassName("apple");
-$(apple).css("z-index", "4")
+$(apple).css("z-index", "6")
 
 $(function () {
     $(apple1).click(function () {
         $(this).
-        animate({top:basketInfoTop, left: basketInfoLeft}, {duration: 500});
+        animate({top:basketInfoTop, left: basketInfoLeft}, {duration: 1000});
     })
 })
 $(function () {
     $(apple2).click(function () {
         $(this).
-        animate({top:basketInfoTop, left: basketInfoLeft + 50}, {duration: 500});
+        animate({top:basketInfoTop, left: basketInfoLeft + 50}, {duration: 1000});
     })
 })
 $(function () {
     $(apple3).click(function () {
         $(this).
-        animate({top:basketInfoTop, left: basketInfoLeft + 100}, {duration: 500});
+        animate({top:basketInfoTop, left: basketInfoLeft + 100}, {duration: 1000});
     })
 })
 
 var wateringcan = document.getElementById("wateringcan");
 var wateringcanInfo = wateringcan.getBoundingClientRect();
+$(wateringcan).css("z-index", "5");
 var wateringcanInfoLeft = wateringcanInfo.left + 100 + "px";
 var wateringcanInfoTop = wateringcanInfo.top + 50 + "px";
 
-var waterdrop = document.getElementsByClassName("waterdrop");
-$(wateringcan).css("z-index", "3")
+var waterdrops = document.getElementsByClassName("waterdrop");
+$(waterdrops).css("z-index", "4");
+$(waterdrops).css({position: 'absolute'});
 
-$(waterdrop).css({"transform": "translate(" + wateringcanInfoLeft + ", " + wateringcanInfoTop + ")"});
-$(function () {
+var windowHeight = $(window).height()
+$(waterdrops).css({"transform": "translate(" + wateringcanInfoLeft + ", " + wateringcanInfoTop + ")"});
+$(document).ready(function() {
     var tilted = false;
     $(wateringcan).click(function () {
         if (tilted) {
             $(wateringcan).css({"transform": "rotate(" + -30 + "deg)"});
+            $(waterdrops).each(function (index, element){
+                $(element).css({"transform": "translate(" + wateringcanInfoLeft + ", " + wateringcanInfoTop + ")"})
+                $(element).animate({top: windowHeight}, {duration: getRandomWholeNumbers(1000, 5000)})
+            })
             tilted = false;
-            //$(waterdrop).animate({bottom: windowBottom}, {duration: 500})
         } else
         {
+            //$(waterdrops).css({"transform": "translate(" + wateringcanInfoLeft + ", " + wateringcanInfoTop + ")"});
             $(wateringcan).css({"transform": "rotate(" + 0 + "deg)"});
             tilted = true;
         }
     })
 })
+
+
