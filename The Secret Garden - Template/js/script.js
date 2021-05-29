@@ -93,17 +93,21 @@ var waterdrops = document.getElementsByClassName("waterdrop");
 $(waterdrops).css("z-index", "4");
 $(waterdrops).css({position: 'absolute'});
 
-var windowHeight = $(window).height()
+var windowHeight = $(window).height();
 
 function waterdropAnimation() {
     var left = wateringcanInfoLeft + "px";
     var top = wateringcanInfoTop + getRandomWholeNumbers(60, 200) + "px";
     $(waterdrops).css({"transform": "translate(" + left + ", " + top + ")"});
-    $(waterdrops).each(function (index, element) {
+    $(waterdrops).each(function(index, element) {
+        var duration = getRandomWholeNumbers(1000, 3000);
         $(element).animate(
             {top: windowHeight},
-            {duration: getRandomWholeNumbers(1000, 3000)}
-            )
+            duration,
+            function () {
+                $(element).css("top", "");
+
+            });
     });
 }
 
