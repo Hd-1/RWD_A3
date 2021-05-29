@@ -94,6 +94,7 @@ $(waterdrops).css("z-index", "4");
 $(waterdrops).css({position: 'absolute'});
 
 var windowHeight = $(window).height();
+var tilted;
 
 function waterdropAnimation() {
     var left = wateringcanInfoLeft + "px";
@@ -106,7 +107,9 @@ function waterdropAnimation() {
             duration,
             function () {
                 $(element).css("top", "");
-
+                if(tilted) {
+                    waterdropAnimation();
+                }
             });
     });
 }
@@ -120,7 +123,7 @@ function waterdropTranslate(){
 waterdropTranslate();
 
 $(document).ready(function() {
-    var tilted = false;
+    tilted = false;
     $(wateringcan).click(function () {
         if (tilted) {
             waterdropAnimation();
