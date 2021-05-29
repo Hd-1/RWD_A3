@@ -101,13 +101,13 @@ function waterdropAnimation() {
     var top = wateringcanInfoTop + getRandomWholeNumbers(60, 200) + "px";
     $(waterdrops).css({"transform": "translate(" + left + ", " + top + ")"});
     $(waterdrops).each(function(index, element) {
-        var duration = getRandomWholeNumbers(1000, 3000);
+        var duration = getRandomWholeNumbers(1000, 2000);
         $(element).animate(
             {top: windowHeight},
             duration,
             function () {
                 $(element).css("top", "");
-                if(tilted) {
+                if (tilted) {
                     waterdropAnimation();
                 }
             });
@@ -125,14 +125,14 @@ waterdropTranslate();
 $(document).ready(function() {
     tilted = false;
     $(wateringcan).click(function () {
-        if (tilted) {
-            waterdropAnimation();
+        if (!tilted) {
+            tilted = true;
             $(wateringcan).css({"transform": "rotate(" + -30 + "deg)"});
-            tilted = false;
+            waterdropAnimation();
         } else {
+            tilted = false;
             waterdropTranslate();
             $(wateringcan).css({"transform": "rotate(" + 0 + "deg)"});
-            tilted = true;
         }
     })
 })
