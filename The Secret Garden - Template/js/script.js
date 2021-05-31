@@ -93,7 +93,7 @@ var waterdrops = document.getElementsByClassName("waterdrop");
 $(waterdrops).css("z-index", "4");
 $(waterdrops).css({position: 'absolute'});
 
-var windowHeight = $(window).height();
+var windowHeight = $(window).height() - wateringcanInfoTop;
 var tilted;
 
 function waterdropAnimation() {
